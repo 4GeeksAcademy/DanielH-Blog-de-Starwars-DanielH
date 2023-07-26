@@ -11,8 +11,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 					title: "SECOND",
 					background: "white",
 					initial: "white"
-				}
+				},
+				
 			]
+			
+			
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -23,6 +26,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				/**
 					fetch().then().then(data => setStore({ "foo": data.bar }))
 				*/
+				
 			},
 			changeColor: (index, color) => {
 				//get the store
@@ -37,9 +41,35 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				//reset the global store
 				setStore({ demo: demo });
+			},
+
+   	    personajesFetch: async  () => {
+
+    			
+
+    		if (localStorage.getItem("personajesLocal") !== null) {
+      			
+    		}else {   
+
+        		const response = await fetch ("https://www.swapi.tech/api/people/")
+          		
+        	if (response.ok) {
+            	const data = await response.json()
+            	
+            	localStorage.setItem("usersLocal", JSON.stringify(data))
+	        }  else {
+				console.log(`error:` , response.status, response.statusText)
+           	          
+           	}
+    		}
+
+    	}
+					
 			}
+			
+			
 		}
-	};
+	;
 };
 
 export default getState;

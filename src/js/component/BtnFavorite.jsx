@@ -3,6 +3,7 @@ import React from "react";
 export const BtnFavorite = () => {
 
 let myFavorites = [];
+// let myFavorites = store.favoritos
 
 return( 
     <div className="dropdown">
