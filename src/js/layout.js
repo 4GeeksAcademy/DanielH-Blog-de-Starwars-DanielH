@@ -3,8 +3,8 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ScrollToTop from "./component/ScrollToTop";
 
 import { Home } from "./views/home";
-import { characters } from "./views/characters";
-import { Single } from "./views/single";
+import { Characters } from "./views/Characters.js";
+import { Detailscharacters } from "./views/Detailscharacters";
 import injectContext from "./store/appContext";
 
 import { Navbar } from "/workspaces/DanielH-Blog-de-Starwars-DanielH/src/js/component/Navbar.jsx";
@@ -23,8 +23,8 @@ const Layout = () => {
 					<Navbar />
 					<Routes>
 						<Route path="/" element={<Home />} />
-						<Route path="/characters" element={<characters />} />
-						<Route path="/single/:theid" element={<Single />} />
+						<Route path="/characters" element={ <Characters /> } />
+						<Route path="/characters/:characterUid"  element={<Detailscharacters />} />
 						<Route path="*" element={<h1>Not found!</h1>} />
 					</Routes>
 					<Footer />
