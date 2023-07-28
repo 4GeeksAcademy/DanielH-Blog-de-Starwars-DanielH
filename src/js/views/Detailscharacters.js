@@ -11,7 +11,7 @@ export const Detailscharacters = () => {
 	const characterUid = params.characterUid - 1;
 	console.log(characterUid)
 
-	const characterView = JSON.parse(localStorage.getItem(`usersLocal`));
+	const characterView = JSON.parse(localStorage.getItem(`personajesLocal`));
 	console.log( characterView);
 
 	const characterArray = characterView && characterView.message === "ok" ? characterView.results : [];

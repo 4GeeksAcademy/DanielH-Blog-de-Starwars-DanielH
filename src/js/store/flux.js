@@ -1,47 +1,31 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			demo: [
-				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
-				},
-				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
-				},
-				
-			]
 			
+
+			favorites: [],							
 			
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
-			exampleFunction: () => {
-				getActions().changeColor(0, "green");
+			addFavorite: (title) => {
+				setStore({favorites: [...getStore().favorites, title]})
 			},
+			removeFavorite: (id) => {
+				setStore({favorites: getStore().favorites.filter((item, i) => {
+					return i != id;
+					})})
+			},
+
+
+		
 			loadSomeData: () => {
 				/**
 					fetch().then().then(data => setStore({ "foo": data.bar }))
 				*/
 				
 			},
-			changeColor: (index, color) => {
-				//get the store
-				const store = getStore();
-
-				//we have to loop the entire demo array to look for the respective index
-				//and change its color
-				const demo = store.demo.map((elm, i) => {
-					if (i === index) elm.background = color;
-					return elm;
-				});
-
-				//reset the global store
-				setStore({ demo: demo });
-			},
+			
 
    	    personajesFetch: async  () => {
 
@@ -56,14 +40,36 @@ const getState = ({ getStore, getActions, setStore }) => {
         	if (response.ok) {
             	const data = await response.json()
             	
-            	localStorage.setItem("usersLocal", JSON.stringify(data))
+            	localStorage.setItem("personajesLocal", JSON.stringify(data))
 	        }  else {
 				console.log(`error:` , response.status, response.statusText)
            	          
            	}
     		}
 
-    	}
+    	},
+
+		planetasFetch: async () =>{
+
+			if (localStorage.getItem("planetasLocal") !== null) {
+      			
+    		}else {   
+
+        		const response = await fetch ("https://www.swapi.tech/api/planets/")
+          		
+        	if (response.ok) {
+            	const data = await response.json()
+            	
+            	localStorage.setItem("planetasLocal", JSON.stringify(data))
+	        }  else {
+				console.log(`error:` , response.status, response.statusText)
+           	          
+           	}
+    		}
+
+
+		},
+
 					
 			}
 			

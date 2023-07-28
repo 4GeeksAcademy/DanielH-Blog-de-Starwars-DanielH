@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import starwarslogo  from "/workspaces/DanielH-Blog-de-Starwars-DanielH/src/img/starwarslogo.png"
-
+import { BtnFavorite } from "/workspaces/DanielH-Blog-de-Starwars-DanielH/src/js/component/BtnFavorite.jsx";
 
 
 export const Navbar = () => {
@@ -36,6 +36,7 @@ export const Navbar = () => {
 							</div>
 						</li>
 					</ul>
+					
 				</div>
 			</div>
 		</nav>
