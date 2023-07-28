@@ -70,6 +70,27 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 		},
 
+		navesFetch: async () =>{
+
+			if (localStorage.getItem("navesLocal") !== null) {
+      			
+    		}else {   
+
+        		const response = await fetch ("https://swapi.tech/api/starships/")
+          		
+        	if (response.ok) {
+            	const data = await response.json()
+            	
+            	localStorage.setItem("navesLocal", JSON.stringify(data))
+	        }  else {
+				console.log(`error:` , response.status, response.statusText)
+           	          
+           	}
+    		}
+
+
+		},
+
 					
 			}
 			
