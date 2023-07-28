@@ -1,17 +1,28 @@
 import React, { useState, useEffect, useContext } from "react";
 
 import { Context } from "../store/appContext";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import "../../styles/demo.css";
 
 export const Characters = () => {
 	const { store, actions } = useContext(Context);
-
+  
+ 
+	 
 	const person = JSON.parse(localStorage.getItem('personajesLocal'));
 	console.log(person)
 
 	const characters = person && person.results ? person.results : [];
-	console.log(characters)
+	console.log(characters.uid)
+  console.log(characters)
+  
+
+
+  const urlImage = "https://starwars-visualguide.com/assets/img/characters/";
+  const handleOnErrorImg = (e) => {e.target.src = "https://starwars-visualguide.com/assets/img/placeholder.jpg"};
+
+
+
 
 	return (
 		<div className="container bg-dark mb-3">
@@ -24,7 +35,7 @@ export const Characters = () => {
             <div className="col" key={character.uid}>
               <h2>Item {character.uid}</h2>
               <div className="card border-dark my-3 mx-2 text-bg-dark">
-                <img alt="" src="" />
+              <img alt="" src={`${urlImage}${character.uid}.jpg`} onError={handleOnErrorImg}></img>
                 <div className="card-body">
                   <h5 className="card-title">{character.name}</h5>
                   <div className="d-flex justify-content-between">

@@ -6,15 +6,10 @@ import "../../styles/demo.css";
 
 export const Planets = () => {
 	const { store, actions } = useContext(Context);
-
 	const planet = JSON.parse(localStorage.getItem('planetasLocal'));
 	console.log(planet)
-
 	const planets = planet && planet.results ? planet.results : [];
 	console.log(planets)
-
-  const urlImage = "https://starwars-visualguide.com/assets/img/planets/";
-	const handleOnErrorImg = (e) => {e.target.src = "https://starwars-visualguide.com/assets/img/placeholder.jpg"};
 
 	return (
 		<div className="container bg-dark mb-3">
@@ -27,7 +22,7 @@ export const Planets = () => {
             <div className="col" key={planeta.uid}>
               <h2>Item {planeta.uid}</h2>
               <div className="card border-dark my-3 mx-2 text-bg-dark">
-                <img alt="" src={`${urlImage}${planeta.uid}.jpg`} onError={handleOnErrorImg}></img>
+                <img alt="" src="" />
                 <div className="card-body">
                   <h5 className="card-title">{planeta.name}</h5>
                   <div className="d-flex justify-content-between">

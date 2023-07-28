@@ -20,6 +20,9 @@ export const DetailsPlanets = () => {
 	const hostPlanets = planetsArray[planetUid].url;
 	console.log(hostPlanets)
 
+    const urlImage = "https://starwars-visualguide.com/assets/img/planets/";
+	const handleOnErrorImg = (e) => {e.target.src = "https://starwars-visualguide.com/assets/img/placeholder.jpg"};
+
 	const [planeta, setPlaneta] = useState([]);
 
 	const fetchPlanetsData = async  () => {
@@ -55,7 +58,7 @@ console.log(planeta)
                 
             <div className="row g-0">
                 <div className="col-md-7">
-                    <img className="img-fluid rounded-start" src="" alt="Imagen de {planeta.properties.name}"/>
+                    <img className="img-fluid rounded-start" src={`${urlImage}${params[`planetUid`]}.jpg`} onError={handleOnErrorImg}/>
                 </div>
                 <div className="col-md-3">
                     <div className="card-body">

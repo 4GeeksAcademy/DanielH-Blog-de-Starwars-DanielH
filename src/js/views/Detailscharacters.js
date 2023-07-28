@@ -7,6 +7,7 @@ export const Detailscharacters = () => {
 	const { store, actions } = useContext(Context);
 
 	const params = useParams();
+	console.log(params)
 
 	const characterUid = params.characterUid - 1;
 	console.log(characterUid)
@@ -20,7 +21,13 @@ export const Detailscharacters = () => {
 	const hostCharacter = characterArray[characterUid].url;
 	console.log(hostCharacter)
 
+	
+	const urlImage = "https://starwars-visualguide.com/assets/img/characters/";
+	const handleOnErrorImg = (e) => {e.target.src = "https://starwars-visualguide.com/assets/img/placeholder.jpg"};
+  
+
 	const [personaje, setPersonaje] = useState([]);
+
 
 	const fetchCharacterData = async  () => {
         try {
@@ -52,7 +59,7 @@ console.log(personaje)
 ) : (
   	<div className="row g-0">
 		<div className="col-md-7 col-lg-6 col-xl-5">
-        	<img className="img-fluid rounded-start" src="" alt="imagen de personaje seleccionado" />
+        	<img className="img-fluid rounded-start" src={`${urlImage}${params[`characterUid`]}.jpg`} onError={handleOnErrorImg}></img>
     	</div>       
         <div className="col-md-5 col-lg-6 col-xl-7">
         	<div className="card-body">
