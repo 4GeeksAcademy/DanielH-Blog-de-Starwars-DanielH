@@ -1,11 +1,19 @@
-import React from "react";
+import React, {useContext} from "react";
 import { Link } from "react-router-dom";
 import starwarslogo  from "/workspaces/DanielH-Blog-de-Starwars-DanielH/src/img/starwarslogo.png"
 import { BtnFavorite } from "/workspaces/DanielH-Blog-de-Starwars-DanielH/src/js/component/BtnFavorite.jsx";
+import { Context } from "../store/appContext";
 
 
 export const Navbar = () => {
+	const { store, actions } = useContext(Context);
+
+	const handleRemoveFavorite = (uid) => {
+	  actions.removeFavorite(uid);
+	};
+
 	return (
+
 		<nav className="navbar navbar-dark bg-dark mb-3">
 			<div className="container-fluid d-flex justify-content-between mx-md-4 mt-4 mb-1">
 				<div>
@@ -34,6 +42,7 @@ export const Navbar = () => {
 									</li>
 								</ul>
 							</div>
+							{/* < BtnFavorite /> */}
 						</li>
 					</ul>
 					

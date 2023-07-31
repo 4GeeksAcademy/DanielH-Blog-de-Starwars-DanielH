@@ -8,7 +8,7 @@ import { Detailscharacters } from "./views/Detailscharacters";
 import { Planets} from "/workspaces/DanielH-Blog-de-Starwars-DanielH/src/js/views/Planets.js"
 import { DetailsPlanets} from "/workspaces/DanielH-Blog-de-Starwars-DanielH/src/js/views/DetailsPlanets.jsx"
 import { Starships } from "/workspaces/DanielH-Blog-de-Starwars-DanielH/src/js/views/Starships.jsx";
-
+import { DetailsStarships } from "/workspaces/DanielH-Blog-de-Starwars-DanielH/src/js/views/DetailsStarships.jsx";
 import injectContext from "./store/appContext";
 
 import { Navbar } from "/workspaces/DanielH-Blog-de-Starwars-DanielH/src/js/component/Navbar.jsx";
@@ -32,6 +32,7 @@ const Layout = () => {
 						<Route path="/planets" element={ <Planets /> } />
 						<Route path="/planets/:planetUid" element={<DetailsPlanets />} />
 						<Route path="/starships" element={ <Starships /> } />
+						<Route path="/starships/:starshipsUid" element={ <DetailsStarships />} /> 
 						<Route path="*" element={<h1>Not found!</h1>} />
 					</Routes>
 					<Footer />

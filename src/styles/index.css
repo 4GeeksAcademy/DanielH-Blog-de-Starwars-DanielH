@@ -1,3 +1,11 @@
 /* 
     General Styles
 */
+body {
+    background-image: url("https://i.pinimg.com/originals/e8/31/64/e83164a80eb1ef1077b792e0c5c499b0.png");
+    background-repeat:repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size:cover;
+    
+  }

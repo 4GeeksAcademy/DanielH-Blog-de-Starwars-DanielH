@@ -6,8 +6,9 @@ export const BtnFavorite = () => {
 
   const [store, action] = useContext(Context);
 
-          let myFavorites = store.favoritos;
-          // let myFavorites = store.favoritos
+          // let myFavorites = store.favoritos;
+            let myFavorites = store.favorites
+          console.log (myFavorites)
 
           return (
             <div className="dropdown">
@@ -35,3 +36,40 @@ export const BtnFavorite = () => {
             </div>
           );
         };
+
+      //   return (
+      //     <div className="dropdown">
+      //       <button
+      //         className="btn btn-secondary dropdown-toggle"
+      //         type="button"
+      //         data-bs-toggle="dropdown"
+      //         aria-expanded="false"
+      //       >
+      //         Favorites
+      //         <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning text-dark">
+      //           {store.favorites.length}
+      //         </span>
+      //       </button>
+      //       <ul className="dropdown-menu dropdown-menu-dark dropdown-menu-lg-end">
+      //         {store.favorites.length === 0 ? (
+      //           <li>
+      //             <span className="dropdown-item">No favorites selected</span>
+      //           </li>
+      //         ) : (
+      //           store.favorites.map((favCharacter) => (
+      //             <li key={favCharacter.uid} className="d-flex align-items-center">
+      //               <span className="dropdown-item">{favCharacter.name}</span>
+      //               <button
+      //                 type="button"
+      //                 className="btn btn-outline-danger me-2"
+      //                 onClick={() => actions.removeFavorite(favCharacter.uid)}
+      //               >
+      //                 <i className="fa fa-trash"></i>
+      //               </button>
+      //             </li>
+      //           ))
+      //         )}
+      //       </ul>
+      //     </div>
+      //   );
+      // };

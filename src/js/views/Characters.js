@@ -3,6 +3,8 @@ import React, { useState, useEffect, useContext } from "react";
 import { Context } from "../store/appContext";
 import { Link, useParams } from "react-router-dom";
 import "../../styles/demo.css";
+import { BtnFavorite } from "/workspaces/DanielH-Blog-de-Starwars-DanielH/src/js/component/BtnFavorite.jsx";
+
 
 export const Characters = () => {
 	const { store, actions } = useContext(Context);
@@ -42,11 +44,24 @@ export const Characters = () => {
 					<Link to={`/characters/${character.uid}`}>	
                     <button className="btn btn-secondary" >Details</button>
 					</Link>
-					<Link to="">
-                    <button className="btn btn-outline-warning" onClick={() => {actions.addFavorite(character.name)} } >
-                      <i className="far fa-heart fa-lg"></i>
+          <button
+                      className="btn btn-outline-warning"
+                      onClick={() => {
+                        if (!store.favorites.some((fav) => fav.name === character.name)) {
+                          actions.addFavorite(character);
+                        } else {
+                          actions.removeFavorite(character.uid);
+                        }
+                      }}
+                    >
+                      <i
+                        className={`far fa-heart fa-lg ${
+                          store.favorites.some((fav) => fav.name === character.name)
+                            ? "text-danger"
+                            : ""
+                        }`}
+                      ></i>
                     </button>
-					</Link>
                   </div>
                 </div>
               </div>

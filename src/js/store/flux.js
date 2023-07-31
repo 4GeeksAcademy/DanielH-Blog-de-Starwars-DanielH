@@ -12,7 +12,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({favorites: [...getStore().favorites, title]})
 			},
 			removeFavorite: (id) => {
-				setStore({favorites: getStore().favorites.filter((item, i) => {
+				setStore({favorites: getStore().favorites.filter((uid, i) => {
 					return i != id;
 					})})
 			},
