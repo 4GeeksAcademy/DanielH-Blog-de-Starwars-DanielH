@@ -3,20 +3,28 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
 			
 
-			favorites: [],							
+			favorites: JSON.parse(localStorage.getItem("favorites")) || [],
 			
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
-			addFavorite: (title) => {
-				setStore({favorites: [...getStore().favorites, title]})
-			},
+			addFavorite: (title) => {const favorites = getStore().favorites;
+				if (!favorites.includes(title)) {
+				  setStore({ favorites: [...favorites, title] });
+				  // Guardar en localStorage
+				  localStorage.setItem("favorites", JSON.stringify([...favorites, title]));
+			}},
+			
 			removeFavorite: (id) => {
-				setStore({favorites: getStore().favorites.filter((uid, i) => {
-					return i != id;
-					})})
-			},
-
+				const updatedFavorites = getStore().favorites.filter((uid, i) => i !== id);
+				setStore({ favorites: updatedFavorites });
+				localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
+			  },
+			
+			  removeAllFavorites: () => {
+				setStore({ favorites: [] });
+				localStorage.removeItem("favorites");
+			  },
 
 		
 			loadSomeData: () => {

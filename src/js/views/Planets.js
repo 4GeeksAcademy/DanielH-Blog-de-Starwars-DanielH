@@ -35,7 +35,9 @@ export const Planets = () => {
                     <button className="btn btn-secondary" >Details</button>
 					</Link>
 					<Link to="">
-                    <button className="btn btn-outline-warning" >
+                    <button className="btn btn-outline-warning" onClick={() => {                        
+                          actions.addFavorite(planeta.name);
+                         }} >
                       <i className="far fa-heart fa-lg"></i>
                     </button>
 					</Link>

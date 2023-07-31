@@ -10,7 +10,7 @@ import { DetailsPlanets} from "/workspaces/DanielH-Blog-de-Starwars-DanielH/src/
 import { Starships } from "/workspaces/DanielH-Blog-de-Starwars-DanielH/src/js/views/Starships.jsx";
 import { DetailsStarships } from "/workspaces/DanielH-Blog-de-Starwars-DanielH/src/js/views/DetailsStarships.jsx";
 import injectContext from "./store/appContext";
-
+import { BtnFavorite } from "/workspaces/DanielH-Blog-de-Starwars-DanielH/src/js/component/BtnFavorite.jsx";
 import { Navbar } from "/workspaces/DanielH-Blog-de-Starwars-DanielH/src/js/component/Navbar.jsx";
 import { Footer } from "./component/Footer";
 

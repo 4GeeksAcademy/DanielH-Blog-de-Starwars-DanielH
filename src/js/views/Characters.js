@@ -8,7 +8,8 @@ import { BtnFavorite } from "/workspaces/DanielH-Blog-de-Starwars-DanielH/src/js
 
 export const Characters = () => {
 	const { store, actions } = useContext(Context);
-  
+  let myFavorites= store.favorites
+  console.log(myFavorites);
  
 	 
 	const person = JSON.parse(localStorage.getItem('personajesLocal'));
@@ -30,7 +31,7 @@ export const Characters = () => {
 		<div className="container bg-dark mb-3">
       <h1 className="text-light text-center pt-4">Characters</h1>
       {characters.length === 0 ? (
-        "Leyendo Datos"
+       "Leyendo Datos"
       ) : (
         <div className="row row-cols-1 row-cols-md-3 row-cols-xl-5 g-2">
           {characters.map((character) => (
@@ -45,22 +46,12 @@ export const Characters = () => {
                     <button className="btn btn-secondary" >Details</button>
 					</Link>
           <button
-                      className="btn btn-outline-warning"
-                      onClick={() => {
-                        if (!store.favorites.some((fav) => fav.name === character.name)) {
-                          actions.addFavorite(character);
-                        } else {
-                          actions.removeFavorite(character.uid);
-                        }
-                      }}
+                      className="btn btn-outline-warning" type="btn"
+                      onClick={() => {                        
+                          actions.addFavorite(character.name);
+                         }}
                     >
-                      <i
-                        className={`far fa-heart fa-lg ${
-                          store.favorites.some((fav) => fav.name === character.name)
-                            ? "text-danger"
-                            : ""
-                        }`}
-                      ></i>
+                      <i className="far fa-heart fa-lg"  ></i>
                     </button>
                   </div>
                 </div>

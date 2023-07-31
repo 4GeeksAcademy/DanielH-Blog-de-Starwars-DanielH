@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import PropTypes from "prop-types";
 import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
+import { SpinnerLaser } from "/workspaces/DanielH-Blog-de-Starwars-DanielH/src/js/component/SpinnerLaser.jsx";
 
 export const DetailsPlanets = () => {
 	const { store, actions } = useContext(Context);
@@ -30,8 +31,12 @@ export const DetailsPlanets = () => {
 			const response = await fetch(hostPlanets);
 			if (response.ok) {
 				const data = await response.json();
-				console.log(data);
-				setPlaneta(data.result);
+				// console.log(data);
+				// setPlaneta(data.result);
+                setTimeout(() => {
+					setPlaneta(data.result);
+					setIsLoading(false); 
+				  }, 7000);
 			} else {
 				console.log("Error:", response.status, response.statusText);
 			}
@@ -52,7 +57,7 @@ console.log(planeta)
             <div className="card mb-3  bg-dark text-light">
 
             {Object.keys(planeta).length === 0 ? (
-            "Leyendo Datos"
+            <SpinnerLaser/>
              ) : (
                 <>
                 

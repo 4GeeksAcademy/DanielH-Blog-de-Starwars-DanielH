@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import PropTypes from "prop-types";
 import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
+import { SpinnerLaser } from "/workspaces/DanielH-Blog-de-Starwars-DanielH/src/js/component/SpinnerLaser.jsx";
 
 export const Detailscharacters = () => {
 	const { store, actions } = useContext(Context);
@@ -34,8 +35,12 @@ export const Detailscharacters = () => {
 			const response = await fetch(hostCharacter);
 			if (response.ok) {
 				const data = await response.json();
-				console.log(data);
-				setPersonaje(data.result);
+				// console.log(data);
+				// setPersonaje(data.result);
+				setTimeout(() => {
+					setPersonaje(data.result);
+					setIsLoading(false); // Cambiar el estado de carga a falso cuando los datos están listos
+				  }, 7000);
 			} else {
 				console.log("Error:", response.status, response.statusText);
 			}
@@ -55,7 +60,7 @@ console.log(personaje)
 		<div className="container bg-dark">
 		  <div className="card mb-3  bg-dark text-light">
 		  {Object.keys(personaje).length === 0 ? (
-  "Leyendo Datos"
+			<SpinnerLaser/>
 ) : (
   	<div className="row g-0">
 		<div className="col-md-7 col-lg-6 col-xl-5">

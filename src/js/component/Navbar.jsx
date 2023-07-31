@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import React, {useContext, useState} from "react";
 import { Link } from "react-router-dom";
 import starwarslogo  from "/workspaces/DanielH-Blog-de-Starwars-DanielH/src/img/starwarslogo.png"
 import { BtnFavorite } from "/workspaces/DanielH-Blog-de-Starwars-DanielH/src/js/component/BtnFavorite.jsx";
@@ -7,6 +7,9 @@ import { Context } from "../store/appContext";
 
 export const Navbar = () => {
 	const { store, actions } = useContext(Context);
+
+	
+
 
 	const handleRemoveFavorite = (uid) => {
 	  actions.removeFavorite(uid);
@@ -31,18 +34,8 @@ export const Navbar = () => {
 							<a className="nav-link link-secondary" href="/starships">Starships</a>
 						</li>
 						<li className="nav-item">
-							<div className="dropdown">
-								<button className="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-								Favorites
-								<span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning text-dark">0</span>
-								</button>
-								<ul className="dropdown-menu dropdown-menu-dark dropdown-menu-lg-end">
-									<li>
-									<span className="dropdown-item">No favorites selected</span>
-									</li>
-								</ul>
-							</div>
-							{/* < BtnFavorite /> */}
+					
+							<BtnFavorite />
 						</li>
 					</ul>
 					

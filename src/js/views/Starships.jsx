@@ -43,7 +43,9 @@ export const Starships = () => {
                     <button className="btn btn-secondary" >Details</button>
 					</Link>
 					<Link to="">
-                    <button className="btn btn-outline-warning" onClick={() => {actions.addFavorite(starship.name)} } >
+                    <button className="btn btn-outline-warning" onClick={() => {                        
+                          actions.addFavorite(starship.name);
+                         }} >
                       <i className="far fa-heart fa-lg"></i>
                     </button>
 					</Link>

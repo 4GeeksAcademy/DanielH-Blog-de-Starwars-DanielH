@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import PropTypes from "prop-types";
 import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
+import { SpinnerLaser } from "/workspaces/DanielH-Blog-de-Starwars-DanielH/src/js/component/SpinnerLaser.jsx";
 
 export const DetailsStarships = () => {
 	const { store, actions } = useContext(Context);
@@ -34,8 +35,12 @@ export const DetailsStarships = () => {
 			const response = await fetch(hostStarships);
 			if (response.ok) {
 				const data = await response.json();
-				console.log(data);
-				setNave(data.result);
+				// console.log(data);
+				// setNave(data.result);
+                setTimeout(() => {
+					setNave(data.result);
+					setIsLoading(false); // Cambiar el estado de carga a falso cuando los datos están listos
+				  }, 7000);
 			} else {
 				console.log("Error:", response.status, response.statusText);
 			}
@@ -56,7 +61,7 @@ console.log(nave)
             <div className="card mb-3  bg-dark text-light">
 
             {Object.keys(nave).length === 0 ? (
-            "Leyendo Datos"
+            <SpinnerLaser/>
              ) : (
                 <>
                 
