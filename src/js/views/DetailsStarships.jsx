@@ -67,7 +67,7 @@ console.log(nave)
                 
             <div className="row g-0">
                 <div className="col-md-7">
-                    <img className="img-fluid rounded-start" src={`${urlImage}${params -1[`starshipUid`]}.jpg`} onError={handleOnErrorImg}/>
+                    <img className="img-fluid rounded-start" src={`${urlImage}${starshipUid}.jpg`} onError={handleOnErrorImg}/>
                 </div>
                 <div className="col-md-3">
                     <div className="card-body">
